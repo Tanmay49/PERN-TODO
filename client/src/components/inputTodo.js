@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from "react";
 
 const InputTodo = () => {
-  const [description, setdescription] = useState("");
+  const [description, setDescription] = useState("");
 
-  const onSubmitForm = async e => {
+  const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
       const body = { description };
@@ -12,7 +12,7 @@ const InputTodo = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       }); //fetch by default calls the GET function
-      console.log(response);
+    window.location='/';
     } catch (err) {
       console.error(err.message);
     }
@@ -29,7 +29,8 @@ const InputTodo = () => {
           type="text"
           className="form-control"
           value={description}
-          onChange={e => setdescription(e.target.value)}
+          onChange={(e) => {setDescription(e.target.value)}} ///fuck don't forget to add these shitty fucking brackets...
+          // Failed to fetch error. FUckkkkkk.....
         />
         <button className="btn btn-success">Add</button>
       </form>  
